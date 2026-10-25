@@ -1,0 +1,104 @@
+{
+  "name": "vscode-tetrix",
+  "displayName": "Tetrix - Break Timer",
+  "description": "A mini Tetris game built into VS Code to force real breaks between two coding rushes.",
+  "version": "0.1.0",
+  "publisher": "local",
+  "icon": "media/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/r-seize/Tetrix"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "tetrix.play",
+        "title": "Tetrix: Take a Break",
+        "category": "Tetrix"
+      },
+      {
+        "command": "tetrix.status",
+        "title": "Tetrix: Show Break Status",
+        "category": "Tetrix"
+      },
+      {
+        "command": "tetrix.resetState",
+        "title": "Tetrix: Reset State (debug)",
+        "category": "Tetrix"
+      }
+    ],
+    "configuration": {
+      "title": "Tetrix",
+      "properties": {
+        "tetrix.cooldownMinutes": {
+          "type": "number",
+          "default": 30,
+          "minimum": 0,
+          "description": "Duration (in minutes) the game stays locked after a break."
+        },
+        "tetrix.maxGamesPerBreak": {
+          "type": "number",
+          "default": 1,
+          "minimum": 1,
+          "description": "Number of games allowed during a single break before locking."
+        },
+        "tetrix.maxBreaksPerDay": {
+          "type": "number",
+          "default": 0,
+          "minimum": 0,
+          "description": "Maximum number of breaks allowed per day. 0 = unlimited."
+        },
+        "tetrix.breakDurationMinutes": {
+          "type": "number",
+          "default": 0,
+          "minimum": 0,
+          "description": "Maximum duration (in minutes) of a break before the game auto-locks, regardless of games left. 0 = disabled."
+        },
+        "tetrix.showStatusBarItem": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the Tetrix status (ready / locked) in the status bar."
+        }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "tetrix",
+          "title": "Tetrix",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "tetrix": [
+        {
+          "type": "webview",
+          "id": "tetrix.gameView",
+          "name": "Tetrix",
+          "icon": "media/icon.svg"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.4.0"
+  }
+}
