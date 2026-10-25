@@ -3,7 +3,7 @@
   "displayName": "Tetrix - Break Timer",
   "description": "A mini Tetris game built into VS Code to force real breaks between two coding rushes.",
   "version": "0.1.0",
-  "publisher": "local",
+  "publisher": "r-seize",
   "icon": "media/icon.png",
   "repository": {
     "type": "git",
