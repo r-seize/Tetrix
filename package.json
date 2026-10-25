@@ -1,5 +1,5 @@
 {
-  "name": "vscode-tetrix",
+  "name": "tetrix",
   "displayName": "Tetrix - Break Timer",
   "description": "A mini Tetris game built into VS Code to force real breaks between two coding rushes.",
   "version": "0.1.0",
